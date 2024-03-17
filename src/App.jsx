@@ -14,9 +14,9 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/*" element={ user ? <Home /> : <Navigate to='/login'/> }/>
-        <Route path="/login" element={user ? <Navigate to='/'/> : <Login /> }/>
-        <Route path="/signup" element={user ? <Navigate to='/'/> : <Register />}/>
+        <Route path="/messages/*" element={ user ? <Home /> : <Navigate to='/messages/login'/> }/>
+        <Route path="/messages/login" element={user ? <Navigate to='/messages'/> : <Login /> }/>
+        <Route path="/messages/signup" element={user ? <Navigate to='/messages'/> : <Register />}/>
       </Routes>
       <Toaster />
     </>

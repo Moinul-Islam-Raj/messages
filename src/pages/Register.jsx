@@ -77,7 +77,7 @@ const Register = () => {
         <button disabled={loading} type="submit" className='hover:text-blue-500 transition-all hover:bg-white font-bold w-full rounded-full text-white bg-blue-500 p-2'>
           {loading ? ". . ." : "Submit"}
         </button>
-        <Link to='/login' className='mt-2 text-white text-xs hover:cursor-pointer hover:underline hover:text-blue-500'>Already have an accuont? Login here!</Link>
+        <Link to='/messages/login' className='mt-2 text-white text-xs hover:cursor-pointer hover:underline hover:text-blue-500'>Already have an accuont? Login here!</Link>
       </form>
     </div>
   )

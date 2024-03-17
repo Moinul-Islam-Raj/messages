@@ -33,7 +33,7 @@ const Login = () => {
         <button disabled={loading} type="submit" className='hover:text-blue-500 transition-all hover:bg-white font-bold w-full rounded-full text-white bg-blue-500 p-2'>
           {loading ? ". . ." : "Submit"}
         </button>
-        <Link to='/signup' className='mt-2 text-white text-xs hover:cursor-pointer hover:underline hover:text-blue-500 text-center w-full'>Don't have an accuont? Signup here!</Link>
+        <Link to='/messages/signup' className='mt-2 text-white text-xs hover:cursor-pointer hover:underline hover:text-blue-500 text-center w-full'>Don't have an accuont? Signup here!</Link>
       </form>
     </div>
   )

@@ -8,7 +8,7 @@ import { AuthContext } from "./contexs/authContext"
 import axios from "axios"
 
 function App() {
-  axios.defaults.baseURL = 'http://localhost:6996/';
+  axios.defaults.baseURL = 'https://chat-api-2-k8ab.onrender.com';
   axios.defaults.withCredentials=true;
   const {user} = useContext(AuthContext);
   return (

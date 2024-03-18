@@ -21,6 +21,7 @@ const Login = () => {
           placeholder='username'
           name='username'
           className='border-2 text-white bg-slate-600 rounded-full px-4 py-2 text-md outline-none mb-2'
+          autoComplete='username current-username'
         />
         <input 
           value={password}
@@ -29,6 +30,7 @@ const Login = () => {
           placeholder='password'
           name='password'
           className='border-2 text-white bg-slate-600 rounded-full px-4 py-2 text-md outline-none mb-2'
+          autoComplete='current-password'
         />
         <button disabled={loading} type="submit" className='hover:text-blue-500 transition-all hover:bg-white font-bold w-full rounded-full text-white bg-blue-500 p-2'>
           {loading ? ". . ." : "Submit"}

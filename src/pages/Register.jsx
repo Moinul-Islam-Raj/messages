@@ -21,6 +21,7 @@ const Register = () => {
           placeholder='full name'
           name='fullName'
           className='border-2 text-white bg-slate-600 rounded-full px-4 py-2 text-md outline-none mb-2'
+          autoComplete='new-password'
         />
         <input
           value={inputs.username}

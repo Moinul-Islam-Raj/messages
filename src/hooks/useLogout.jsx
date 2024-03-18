@@ -2,10 +2,12 @@ import { useContext, useState } from "react"
 import toast from "react-hot-toast";
 import {AuthContext} from '../contexs/authContext.jsx'
 import axios from "axios";
+import { ConversationContext } from "../contexs/conversationContext.jsx";
 
 const useLogout = () => {
     const [loading, setLoading] = useState(false);
     const {setUser} = useContext(AuthContext);
+    const {setSelectedConversation} = useContext(ConversationContext);
 
     const logout = async() => {
         setLoading(true);
@@ -17,6 +19,7 @@ const useLogout = () => {
 
             localStorage.removeItem('user');
             setUser(null);
+            setSelectedConversation([]);
         } catch (error) {
             toast.error(error.message);
         } finally {

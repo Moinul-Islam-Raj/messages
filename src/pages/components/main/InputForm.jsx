@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import useSendMessage from '../../../hooks/useSendMessage';
 
 const InputForm = () => {
+  const [text, setText] = useState('');
+  const [loading, send] = useSendMessage();
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    send(text);
+    setText('');
+  }
   return (
     <div className='absolute bottom-0 p-2 w-full bg-slate-700'>
-      <form className='flex gap-2 items-center justify-center w-full'>
+      <form onSubmit={handleSubmit} className='flex gap-2 items-center justify-center w-full'>
         <input 
+            value={text}
+            onChange={(ev) => setText(ev.target.value)}
             type="text"
             placeholder='Aa'
             className='outline-none w-4/5 px-4 py-1 rounded-sm text-lg'

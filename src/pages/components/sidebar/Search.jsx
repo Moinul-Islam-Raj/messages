@@ -1,10 +1,30 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import useConversation from '../../../hooks/useConversaton';
+import { ConversationContext } from '../../../contexs/conversationContext';
+import toast from 'react-hot-toast';
 
 const Search = () => {
+  const [text, setText] = useState('');
+  const [loading, conversations] = useConversation();
+  const {setSelectedConversation} = useContext(ConversationContext);
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    const foundConvs = conversations.filter(c => c.fullName.toUpperCase().includes(text.toUpperCase()));
+    if(foundConvs.length > 0){
+      setSelectedConversation(foundConvs[0]);
+      setText('');
+    }
+    else{
+      toast.error("No user found.");
+    }
+  }
   return (
     <div className='mb-2'>
-      <form className='flex w-full items-center justify-center gap-2'>
+      <form onSubmit={handleSubmit} className='flex w-full items-center justify-center gap-2'>
         <input 
+          value={text}
+          onChange={(ev) => setText(ev.target.value)}
           type="text" 
           placeholder='Search' 
           className='w-3/4 px-4 py-1 border rounded-full outline-none text-md'

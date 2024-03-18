@@ -14,8 +14,7 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route path="/*" element={<Home />}/> */}
-        <Route path="/messages/*" element={ user ? <Home /> : <Navigate to='/messages/login'/> }/>
+        <Route path="/messages/*" element={ user ? <Home /> : <Navigate to='/messages/signup'/> }/>
         <Route path="/messages/login" element={user ? <Navigate to='/messages'/> : <Login /> }/>
         <Route path="/messages/signup" element={user ? <Navigate to='/messages'/> : <Register />}/>
       </Routes>

@@ -13,8 +13,8 @@ const useLogin = () => {
         try {
             
             const {data} = await axios.post('/api/auth/login', {username, password});
+            console.log(data);
             if(data.error){
-                console.log(data);
                 toast.error(data.error);
                 setLoading(false);
                 return

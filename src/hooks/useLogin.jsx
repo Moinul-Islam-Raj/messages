@@ -7,12 +7,10 @@ const useLogin = () => {
     const [loading, setLoading] = useState(false);
     const {setUser} = useContext(AuthContext);
 
-    const login = async(username, password) => {
+    const login = (username, password) => {
         if(!handleInputError(username, password)) return
-        setLoading(true);
-        try {
-            
-            const {data} = await axios.post('/api/auth/login', {username, password});
+        setLoading(true);  
+        axios.post('/api/auth/login', {username, password}).then(({data}) => {
             if(data.error){
                 toast.error(data.error);
                 setLoading(false);
@@ -21,12 +19,11 @@ const useLogin = () => {
 
             localStorage.setItem('user', JSON.stringify(data));
             setUser(data);
-            
-        } catch (error) {
-            toast.error(error.response.data.error);
-        } finally {
+        }).catch(error => {
+            toast.error(error.response?.data?.error);
+        }).finally(() => {
             setLoading(false);
-        }
+        })
     }
 
     return [loading, login]

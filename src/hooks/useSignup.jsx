@@ -9,9 +9,8 @@ const useSignup = () => {
     const signup = async({fullName, username, password, confirmPassword, gender}) => {
         if(!handleInputError({fullName, username, password, confirmPassword, gender})) return
         setLoading(true);
-        try {
             
-            const {data} = await axios.post('/api/auth/signup', {fullName, username, password, confirmPassword, gender});
+        axios.post('/api/auth/signup', {fullName, username, password, confirmPassword, gender}).then(({data}) => {
             if(data.error){
                 toast.error(data.error);
                 setLoading(false);
@@ -20,12 +19,11 @@ const useSignup = () => {
 
             localStorage.setItem('user', JSON.stringify(data));
             setUser(data);
-            
-        } catch (error) {
-            toast.error(error.response.data.error);
-        } finally {
+        }).catch(error => {
+            toast.error(error.response?.data?.error);
+        }).finally(() => {
             setLoading(false);
-        }
+        })
     }
 
     return [loading, signup]

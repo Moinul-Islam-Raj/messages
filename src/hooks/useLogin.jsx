@@ -14,7 +14,10 @@ const useLogin = () => {
             
             const {data} = await axios.post('/api/auth/login', {username, password});
             if(data.error){
-                throw new Error(data.error);            }
+                toast.error(data.error);
+                setLoading(false);
+                return
+            }
 
             localStorage.setItem('user', JSON.stringify(data));
             setUser(data);

@@ -13,7 +13,10 @@ const useSignup = () => {
             
             const {data} = await axios.post('/api/auth/signup', {fullName, username, password, confirmPassword, gender});
             if(data.error){
-                throw new Error(data.error);            }
+                toast.error(data.error);
+                setLoading(false);
+                return
+            }
 
             localStorage.setItem('user', JSON.stringify(data));
             setUser(data);

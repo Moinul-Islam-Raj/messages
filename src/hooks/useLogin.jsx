@@ -11,8 +11,9 @@ const useLogin = () => {
         if(!handleInputError(username, password)) return
         setLoading(true);
         try {
-            
+            console.log('prev');
             const {data} = await axios.post('/api/auth/login', {username, password});
+            console.log("fter");
             console.log(data);
             if(data.error){
                 toast.error(data.error);

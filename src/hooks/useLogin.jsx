@@ -7,25 +7,26 @@ const useLogin = () => {
     const [loading, setLoading] = useState(false);
     const {setUser} = useContext(AuthContext);
 
-    const login = (username, password) => {
+    const login = async(username, password) => {
         if(!handleInputError(username, password)) return
         setLoading(true);
-
-        axios.post('/api/auth/login', {username, password})
-            .then(({data}) => {
-                if(data.error){
-                    toast.error(data.error);
-                    setLoading(false);
-                    return
-                }
-
-                localStorage.setItem('user', JSON.stringify(data));
-                setUser(data);
-            }).catch(e => {
-                console.log(e)
-            }).finally(() => {
+        try {
+            
+            const {data} = await axios.post('/api/auth/login', {username, password});
+            if(data.error){
+                toast.error(data.error);
                 setLoading(false);
-            })
+                return
+            }
+
+            localStorage.setItem('user', JSON.stringify(data));
+            setUser(data);
+            
+        } catch (error) {
+            toast.error(error.response.data.error);
+        } finally {
+            setLoading(false);
+        }
     }
 
     return [loading, login]

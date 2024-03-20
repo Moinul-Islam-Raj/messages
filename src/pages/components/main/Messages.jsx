@@ -10,7 +10,10 @@ const Messages = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      ref.current?.lastElementChild?.scrollIntoView()
+      ref.current?.lastElementChild?.scrollIntoView({
+        behaviour:'smooth',
+        block:'end'
+      })
     }, 150);
   }, [messages])
 

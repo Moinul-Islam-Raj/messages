@@ -7,7 +7,7 @@ import Main from './components/main/Main'
 const Home = () => {
   return (
     <div className='flex items-center justify-center bg-blue-100 w-screen h-screen'>
-      <div className="bg-white rounded-xl overflow-hidden md:w-4/5 w-full max-w-[750px] md:h-4/5 h-full md:flex block">
+      <div className="bg-white rounded-xl overflow-hidden sm:w-4/5 w-full max-w-[750px] sm:h-4/5 h-full sm:flex block">
         <Sidebar />
         <Main />
       </div>

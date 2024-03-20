@@ -8,7 +8,7 @@ const Main = () => {
   const {selectedConversation} = useContext(ConversationContext);
   const {user} = useContext(AuthContext);
   return (
-    <div className='relative md:w-2/3 sm:w-ful md:h-full h-3/5 bg-slate-700'>
+    <div className='relative sm:w-2/3 w-ful sm:h-full h-3/5 bg-slate-700'>
       {selectedConversation?._id ? 
       <>
         <div className='border-b border-slate-500 px-4 py-2 text-white'>

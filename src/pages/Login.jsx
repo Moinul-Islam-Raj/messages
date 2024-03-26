@@ -33,7 +33,7 @@ const Login = () => {
           autoComplete='current-password'
         />
         <button disabled={loading} type="submit" className='hover:text-blue-500 transition-all hover:bg-white font-bold w-full rounded-full text-white bg-blue-500 p-2'>
-          {loading ? ". . ." : "Submit"}
+          {loading ? <div className='animate-spin h-5 w-5 rounded-full border-4 border-slate-400 border-r-slate-200 mx-auto'/> : "Submit"}
         </button>
         <Link to='/messages/signup' className='mt-2 text-white text-xs hover:cursor-pointer hover:underline hover:text-blue-500 text-center w-full'>Don't have an accuont? Signup here!</Link>
       </form>

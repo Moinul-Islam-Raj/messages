@@ -1,15 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import Logout from './components/sidebar/Logout'
-import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react'
 import Sidebar from './components/sidebar/Sidebar'
 import Main from './components/main/Main'
+import { ConversationContext } from '../contexs/conversationContext';
+import { useListenForMessages } from '../hooks/useListenForMessages';
 
 const Home = () => {
+  const {selectedConversation} = useContext(ConversationContext);
+
+  useEffect(() => {
+    if(Notification.permission !== 'granted'){
+      Notification.requestPermission();
+    }
+  })
+
+  useListenForMessages();
   return (
     <div className='flex items-center justify-center bg-blue-100 w-screen h-screen'>
-      <div className="bg-white rounded-xl overflow-hidden sm:w-4/5 w-full max-w-[750px] sm:h-4/5 h-full sm:flex block">
-        <Sidebar />
-        <Main />
+      <div className="bg-white w-full h-full block">
+        {selectedConversation?._id ? <Main /> : <Sidebar />}
       </div>
     </div>
   )

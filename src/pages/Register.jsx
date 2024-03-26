@@ -21,8 +21,7 @@ const Register = () => {
           placeholder='full name'
           name='fullName'
           className='border-2 text-white bg-slate-600 rounded-full px-4 py-2 text-md outline-none mb-2'
-          autoComplete='new-password'
-        />
+          />
         <input
           value={inputs.username}
           onChange={(ev) => setInputs(prev => ({...prev, username:ev.target.value}))}
@@ -30,7 +29,7 @@ const Register = () => {
           placeholder='username'
           name='username'
           className='border-2 text-white bg-slate-600 rounded-full px-4 py-2 text-md outline-none mb-2'
-        />
+          />
         <input 
           value={inputs.password}
           onChange={(ev) => setInputs(prev => ({...prev, password:ev.target.value}))}
@@ -38,6 +37,7 @@ const Register = () => {
           placeholder='password'
           name='password'
           className='border-2 text-white bg-slate-600 rounded-full px-4 py-2 text-md outline-none mb-2'
+          autoComplete='new-password'
         />
         <input 
           value={inputs.confirmPassword}
@@ -46,6 +46,7 @@ const Register = () => {
           placeholder='confirm password'
           name='confirmPassword'
           className='border-2 text-white bg-slate-600 rounded-full px-4 py-2 text-md outline-none mb-4'
+          autoComplete='confirm-password'
         />
         <div className='w-full flex gap-2 px-2 text-white mb-2'>
         <label className='text-gray-300'>gender:</label>
@@ -76,7 +77,7 @@ const Register = () => {
         </div>
 
         <button disabled={loading} type="submit" className='hover:text-blue-500 transition-all hover:bg-white font-bold w-full rounded-full text-white bg-blue-500 p-2'>
-          {loading ? ". . ." : "Submit"}
+          {loading ? <div className='animate-spin h-5 w-5 rounded-full border-4 border-slate-400 border-r-slate-200 mx-auto'/> : "Submit"}
         </button>
         <Link to='/messages/login' className='mt-2 text-white text-xs hover:cursor-pointer hover:underline hover:text-blue-500'>Already have an accuont? Login here!</Link>
       </form>

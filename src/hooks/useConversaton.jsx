@@ -2,10 +2,11 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react"
 import toast from "react-hot-toast";
 import { AuthContext } from "../contexs/authContext";
+import { ConversationContext } from "../contexs/conversationContext";
 
 const useConversation = () => {
     const {user} = useContext(AuthContext);
-    const [conversations, setConversations] = useState([]);
+    const {conversations, setConversations} = useContext(ConversationContext);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);

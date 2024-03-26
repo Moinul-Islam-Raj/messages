@@ -4,11 +4,23 @@ import { ConversationContext } from "../contexs/conversationContext";
 
 export const useListenForMessages = () => {
     const {socket} = useContext(SocketContext);
-    const {setMessages} = useContext(ConversationContext);
+    const {setMessages, selectedConversation} = useContext(ConversationContext);
     useEffect(() => {
         if(socket){
-            socket.on('newMessage', (message) => {
-                setMessages(prev => [...prev, message]);
+            socket.on('newMessage', ({message, senderName}) => {
+                if (selectedConversation?._id?.toString() === message.senderId.toString()) {
+                    setMessages(prev => [...prev, message]);
+                    if(document.visibilityState === 'hidden'){
+                        new Notification(`New message from ${senderName}`, {
+                            body:message.text
+                        })
+                    }
+                }
+                else{
+                    new Notification(`New message from ${senderName}`, {
+                        body:message.text
+                    })
+                }
             });
         }
 
@@ -16,5 +28,5 @@ export const useListenForMessages = () => {
             if(socket)
                 socket.off('newMessage');
         }
-    }, [socket]);
+    }, [socket, selectedConversation?._id]);
 }

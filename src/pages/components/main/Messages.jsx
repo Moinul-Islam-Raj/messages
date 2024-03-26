@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import Message from './Message'
 import useMessages from '../../../hooks/useMessages'
-import {useListenForMessages} from '../../../hooks/useListenForMessages'
 
 const Messages = () => {
   const [loading, messages] = useMessages();
@@ -17,12 +16,28 @@ const Messages = () => {
     }, 150);
   }, [messages])
 
-  useListenForMessages();
   return (
-    <div ref={ref} className='h-4/5 overflow-auto p-4 w-full text-white'>
+    <div ref={ref} className='overflow-auto p-4 w-full text-white flex-grow'>
       {messages.map((m, i) => (
         <Message message={m} key={i}/>
       ))}
+      {(!loading && !messages?.length) && (
+        <p className='w-full text-center text-sm text-slate-500'>Send a message to start conversation</p>
+      )}
+      {loading && (
+        <>
+          <div className='animate-pulse flex-row-reverse ml-auto mb-2 flex gap-2 max-w-[70%]'>
+            <div className='w-8 h-8 bg-slate-500 rounded-full'/>
+            <div className='rounded-l-xl h-16 bg-slate-500 rounded-b-xl p-2 w-full'>
+            </div>
+          </div>
+          <div className='animate-pulse mb-2 flex gap-2 max-w-[70%]'>
+            <div className='w-8 h-8 bg-slate-500 rounded-full'/>
+            <div className='rounded-r-xl h-16 bg-slate-500 rounded-b-xl p-2 w-full'>
+          </div>
+        </div>
+      </>
+      )}
     </div>
   )
 }

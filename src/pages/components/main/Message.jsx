@@ -20,7 +20,7 @@ const Message = ({message}) => {
         <div className={`${isOur ? ' rounded-l-xl bg-blue-500' : 'rounded-r-xl bg-slate-500'} rounded-b-xl p-2 w-full`}>
           {message.text}
         </div>
-        <p className={`${isOur && 'text-end' } max-w-full text-xs text-slate-500`}>{new Date(message.createdAt).getHours()+':'+new Date(message.createdAt).getMinutes()+' - '+new Date(message.createdAt).getDate()+'/'+(new Date(message.createdAt).getMonth()+1)}</p>
+        <p className={`${isOur && 'text-end' } max-w-full text-xs text-slate-500`}>{new Date(message.createdAt).getHours()+':'+new Date(message.createdAt).getMinutes()+' - '+new Date(message.createdAt).toLocaleDateString()}</p>
       </div>
     </div>
   )

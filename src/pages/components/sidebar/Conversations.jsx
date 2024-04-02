@@ -6,7 +6,7 @@ const Conversations = () => {
 
   const [loading, conversations] = useConversation();
   return (
-    <div className="h-4/5 overflow-auto">
+    <div className="overflow-auto flex-grow">
       {conversations.map(c => (
         <Conversation conversation={c} key={c._id}/>
       ))}

@@ -20,7 +20,7 @@ const Search = () => {
     }
   }
   return (
-    <div className='mb-2'>
+    <div className='mb-2 h-fit'>
       <form onSubmit={handleSubmit} className='flex w-full items-center justify-center gap-2'>
         <input 
           value={text}

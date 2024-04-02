@@ -16,8 +16,12 @@ const Home = () => {
   useListenForMessages();
   return (
     <div className='flex items-center justify-center bg-blue-100 w-screen h-screen'>
-      <div className="bg-white w-full h-full block">
+      <div className="w-full h-full block sm:hidden">
         {selectedConversation?._id ? <Main /> : <Sidebar />}
+      </div>
+      <div className="w-3/4 max-w-[750px] h-4/5 hidden sm:flex overflow-hidden rounded-xl">
+        <Sidebar />
+        <Main />
       </div>
     </div>
   )
